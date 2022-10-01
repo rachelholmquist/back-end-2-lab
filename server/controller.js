@@ -26,5 +26,16 @@ module.exports = {
         globalId++
         res.status(200).send(houses);
     },
-    updateHouse: () => {},
-}
+    updateHouse: (req, res) => {
+        let { id } = req.params;
+        let { type } = req.body;
+        const houseIndex = houses.findIndex((house) => house.id === +id);
+
+        if(type === 'plus' && houses[houseIndex].price < 10,000){
+            houses[houseIndex].price += 10,000;
+          } else if (type === 'minus' && houses[houseIndex].price > 10,000){
+            houses[houseIndex].price -= 10,000;
+          }
+          res.status(200).send(movies);
+        }
+    }
